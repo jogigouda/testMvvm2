@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="photoDetail" type="com.fitpeo.test.jogendra.modal.data.Photo"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/parentPadding"
+            tools:context=".view.MainActivity">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/display_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:layout_marginStart="16dp"
+                android:paddingTop="8dp"
+                android:gravity="left"
+                tools:text="Title"
+                android:textStyle="bold"
+                android:text="@string/title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image"/>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                app:layout_constrainedWidth="true"
+                android:layout_marginStart="16dp"
+                android:paddingTop="8dp"
+                android:gravity="left"
+                tools:text="ssf sfs fd  sdf sdf dsf sdf sdf sdf sdfs sdf sdf sd sdf ds sf d"
+                android:text="@{photoDetail.title}"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/display_title"
+                app:layout_constraintTop_toBottomOf="@id/image"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/display_album_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:paddingTop="16dp"
+                android:gravity="left"
+                tools:text="Album id:"
+                android:textStyle="bold"
+                android:text="@string/albumId"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/album"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:layout_marginStart="16dp"
+                android:paddingTop="16dp"
+                android:textSize="15sp"
+                android:gravity="left"
+                android:text="@{String.valueOf(photoDetail.albumId)}"
+                tools:text="1"
+                app:layout_constraintLeft_toRightOf="@+id/display_album_id"
+                app:layout_constraintTop_toBottomOf="@id/title"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/display_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:layout_marginStart="16dp"
+                android:paddingTop="16dp"
+                android:textSize="15sp"
+                android:gravity="left"
+                android:textStyle="bold"
+                android:text="@string/Id"
+                tools:text="@string/Id"
+                app:layout_constraintLeft_toRightOf="@+id/album"
+                app:layout_constraintTop_toBottomOf="@id/title"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:layout_marginStart="16dp"
+                android:paddingTop="16dp"
+                android:textSize="15sp"
+                android:gravity="left"
+                android:text="@{String.valueOf(photoDetail.id)}"
+                tools:text="1"
+                app:layout_constraintLeft_toRightOf="@+id/display_id"
+                app:layout_constraintTop_toBottomOf="@id/title"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Image List</string>
+    <string name="title">"Title : "</string>
+    <string name="Id">"Id : "</string>
+    <string name="albumId">"Album Id : "</string>
+    <string name="imageDetail">Image detail</string>
+</resources>
