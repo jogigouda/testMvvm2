@@ -12,7 +12,11 @@ import com.fitpeo.test.jogendra.view.DetailedActivity
 import com.squareup.picasso.Picasso
 import javax.inject.Inject
 
-class PhotosAdapter @Inject constructor(private val mPhotosList: List<Photo>, private val mContext: Context): RecyclerView.Adapter<PhotosAdapter.PhotosHolder>() {
+class PhotosAdapter @Inject constructor(): RecyclerView.Adapter<PhotosAdapter.PhotosHolder>() {
+
+
+    lateinit var mPhotosList: List<Photo>
+    lateinit var  mContext: Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotosHolder {
         val view = LayoutInflater.from(parent.context)

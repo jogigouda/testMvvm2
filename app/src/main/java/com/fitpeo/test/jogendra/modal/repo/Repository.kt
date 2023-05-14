@@ -7,7 +7,7 @@ import com.fitpeo.test.jogendra.modal.interfaces.PhotosApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+import dagger.hilt.android.components.ViewModelComponent
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import retrofit2.Response
@@ -15,30 +15,20 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
+import javax.inject.Singleton
 
-
+@InstallIn(ViewModelComponent::class)
 @Module
-@InstallIn(SingletonComponent::class)
-class Repository {
-    val baseUrl = "https://jsonplaceholder.typicode.com/"
+class Repository  @Inject constructor(){
 
-    companion object{
-        private lateinit var retrofitHelper: Repository
-
-        @Provides
-         fun getInstance(): Repository {
-            return if(::retrofitHelper.isInitialized){
-                retrofitHelper
-            } else{
-                retrofitHelper = Repository()
-                retrofitHelper
-            }
-        }
-    }
-
+    @Inject
+    @Singleton
+    lateinit var appUtil: AppUtil
 
 
     private fun createRetrofitInstance(): Retrofit {
+        val baseUrl = "https://jsonplaceholder.typicode.com/"
         return Retrofit.Builder().baseUrl(baseUrl)
             .client(provideOkHttpClient())
             // we need to add converter factory to
@@ -47,9 +37,14 @@ class Repository {
             .build()
     }
 
+
+    @Provides
+    @Singleton
     suspend fun getPhotosList() : Response<List<Photo>>{
        return createPhotosApi().getPhotos()
     }
+
+
 
     private fun createPhotosApi():PhotosApi{
         return createRetrofitInstance().create(PhotosApi::class.java)
@@ -65,11 +60,11 @@ class Repository {
 
         httpClient.addInterceptor(object : NetworkInterceptor() { //Interceptor added
             override fun isInternetAvailable(): Boolean {
-               return AppUtil.isNetworkAvailable(MyApplication.appContext)
+               return appUtil.isNetworkAvailable(MyApplication.appContext)
             }
 
             override fun showMsgNetworkNotAvailable() {
-                AppUtil.showMsgNetworkNotAvailable(MyApplication.appContext)
+                appUtil.showMsgNetworkNotAvailable(MyApplication.appContext)
             }
 
         })

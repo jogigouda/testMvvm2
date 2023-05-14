@@ -1,8 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
-    id 'com.google.dagger.hilt.android'
+    id 'kotlin-kapt'   //Dependency injection
+    id 'com.google.dagger.hilt.android' //Dependency injection
 }
 
 android {
@@ -74,11 +74,11 @@ dependencies {
 
     //Hilt Dependency injection
     implementation "com.google.dagger:hilt-android:2.44"
-    testImplementation 'junit:junit:4.13.2'
     kapt "com.google.dagger:hilt-compiler:2.44"
 
 
     //Testing libs
+    testImplementation 'junit:junit:4.13.2'
     implementation 'androidx.test:core-ktx:1.5.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

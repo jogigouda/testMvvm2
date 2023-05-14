@@ -8,9 +8,10 @@ import com.fitpeo.test.jogendra.R
 import com.fitpeo.test.jogendra.databinding.ActivityDetailBinding
 import com.fitpeo.test.jogendra.modal.data.Photo
 import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailedActivity : AppCompatActivity() {
-    val TAG = "DetailedActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

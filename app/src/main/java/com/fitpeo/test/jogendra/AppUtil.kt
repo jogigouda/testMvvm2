@@ -5,11 +5,17 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Looper
 import android.widget.Toast
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Inject
 
-class AppUtil {
-    companion object{
+@InstallIn(SingletonComponent::class)
+@Module
+class AppUtil @Inject constructor(){
 
-        fun isNetworkAvailable(appContext: Context): Boolean {
+        fun isNetworkAvailable(@ApplicationContext appContext: Context): Boolean {
             val connectivityManager = appContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             val network = connectivityManager.activeNetwork
             val capabilities = connectivityManager.getNetworkCapabilities(network)
@@ -20,9 +26,9 @@ class AppUtil {
             return hasInternet
         }
 
-        fun showMsgNetworkNotAvailable(appContext: Context) {
+        fun showMsgNetworkNotAvailable(@ApplicationContext appContext: Context) {
             Looper.prepare()
             Toast.makeText(appContext,"No network!!", Toast.LENGTH_LONG).show()
         }
-    }
+
 }
